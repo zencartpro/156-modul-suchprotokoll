@@ -1,7 +1,7 @@
 <?php
-// Search Log v2.4
+// Search Log v2.5.1
 // Written By C.J.Pinder (c) 2007
-// Portions Copyright 2003-2007 Zen Cart Development Team
+// Portions Copyright 2003-2020 Zen Cart Development Team
 // Portions Copyright 2003 osCommerce
 //
 // This source file is subject to version 2.0 of the GPL license, 
@@ -18,7 +18,7 @@ if (!defined('IS_ADMIN_FLAG')) {
 
 class search_log extends base
 {
-	function search_log()
+	function __construct()
 	{
 		global $zco_notifier, $session_started;
 		if ($session_started)
