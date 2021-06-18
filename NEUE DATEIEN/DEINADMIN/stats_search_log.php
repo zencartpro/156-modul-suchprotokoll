@@ -1,7 +1,7 @@
 <?php
-   // Search Log 2.4.0
+   // Search Log 2.6.0
    // Written By C.J.Pinder (c) 2007
-   // Portions Copyright 2003-2019 Zen Cart Development Team
+   // Portions Copyright 2003-2021 Zen Cart Development Team
    // Portions Copyright 2003 osCommerce
    //
    // This source file is subject to version 2.0 of the GPL license, 
@@ -146,14 +146,20 @@
                               <td valign="top">
                                  <table border="0" width="100%" cellspacing="0" cellpadding="2" summary="">
                                     <tr class="dataTableHeadingRow">
-                                       <td class="dataTableHeadingContent" align="left" valign="top" width="20%"><?php echo (($_GET['list_order']=='searchdate' or $_GET['list_order']=='searchdate-desc') ? '<span class="SortOrderHeader">' . TABLE_HEADING_DATE . '</span>' : TABLE_HEADING_DATE); ?><br />
-                                          <a href="<?php echo zen_href_link(basename($PHP_SELF) . '?list_order=searchdate', '', 'NONSSL'); ?>"><?php echo ($_GET['list_order']=='searchdate' ? '<span class="SortOrderHeader">Asc</span>' : '<span class="SortOrderHeaderLink">Asc</span>'); ?></a>&nbsp; <a href="<?php echo zen_href_link(basename($PHP_SELF) . '?list_order=searchdate-desc', '', 'NONSSL'); ?>"><?php echo ($_GET['list_order']=='searchdate-desc' ? '<span class="SortOrderHeader">Desc</span>' : '<span class="SortOrderHeaderLink">Desc</span>'); ?></a>
-                                       </td>
-                                       <td class="dataTableHeadingContent" align="left" valign="top"><?php echo (($_GET['list_order']=='searchterm' or $_GET['list_order']=='searchterm-desc') ? '<span class="SortOrderHeader">' . TABLE_HEADING_SEARCH_TERM . '</span>' : TABLE_HEADING_SEARCH_TERM); ?><br />
-                                          <a href="<?php echo zen_href_link(basename($PHP_SELF) . '?list_order=searchterm', '', 'NONSSL'); ?>"><?php echo ($_GET['list_order']=='searchterm' ? '<span class="SortOrderHeader">Asc</span>' : '<span class="SortOrderHeaderLink">Asc</span>'); ?></a>&nbsp; <a href="<?php echo zen_href_link(basename($PHP_SELF) . '?list_order=searchterm-desc', '', 'NONSSL'); ?>"><?php echo ($_GET['list_order']=='searchterm-desc' ? '<span class="SortOrderHeader">Desc</span>' : '<span class="SortOrderHeaderLink">Desc</span>'); ?></a>
-                                       </td>
-                                       <td class="dataTableHeadingContent" width="20%"><?php echo (($_GET['list_order']=='searchresults' or $_GET['list_order']=='searchresults-desc') ? '<span class="SortOrderHeader">' . TABLE_HEADING_RESULTS . '</span>' : TABLE_HEADING_RESULTS); ?><br />
-                                          <a href="<?php echo zen_href_link(basename($PHP_SELF) . '?list_order=searchresults', '', 'NONSSL'); ?>"><?php echo ($_GET['list_order']=='searchresults' ? '<span class="SortOrderHeader">Asc</span>' : '<span class="SortOrderHeaderLink">Asc</span>'); ?></a>&nbsp; <a href="<?php echo zen_href_link(basename($PHP_SELF) . '?list_order=searchresults-desc', '', 'NONSSL'); ?>"><?php echo ($_GET['list_order']=='searchresults-desc' ? '<span class="SortOrderHeader">Desc</span>' : '<span class="SortOrderHeaderLink">Desc</span>'); ?></a>
+                                     <td class="dataTableHeadingContent" align="left" valign="top" width="20%">
+                                       <?php echo (($_GET['list_order']=='searchdate' or $_GET['list_order']=='searchdate-desc') ? '<span class="SortOrderHeader">' . TABLE_HEADING_DATE . '</span>' : TABLE_HEADING_DATE); ?><br />
+                                       <a href="<?php echo zen_href_link(basename($PHP_SELF), zen_get_all_get_params(array('list_order', 'page')) . 'list_order=searchdate', 'NONSSL'); ?>"><?php echo ($_GET['list_order']=='searchdate' ? '<span class="SortOrderHeader">Asc</span>' : '<span class="SortOrderHeaderLink">Asc</span>'); ?></a>
+                                       <a href="<?php echo zen_href_link(basename($PHP_SELF), zen_get_all_get_params(array('list_order', 'page')) . 'list_order=searchdate-desc', 'NONSSL'); ?>"><?php echo ($_GET['list_order']=='searchdate-desc' ? '<span class="SortOrderHeader">Desc</span>' : '<span class="SortOrderHeaderLink">Desc</span>'); ?></a>
+                                     </td>
+                                     <td class="dataTableHeadingContent" align="left" valign="top">
+                                       <?php echo (($_GET['list_order']=='searchterm' or $_GET['list_order']=='searchterm-desc') ? '<span class="SortOrderHeader">' . TABLE_HEADING_SEARCH_TERM . '</span>' : TABLE_HEADING_SEARCH_TERM); ?><br />
+                                       <a href="<?php echo zen_href_link(basename($PHP_SELF), zen_get_all_get_params(array('list_order', 'page')) . 'list_order=searchterm', '', 'NONSSL'); ?>"><?php echo ($_GET['list_order']=='searchterm' ? '<span class="SortOrderHeader">Asc</span>' : '<span class="SortOrderHeaderLink">Asc</span>'); ?></a>
+                                       <a href="<?php echo zen_href_link(basename($PHP_SELF), zen_get_all_get_params(array('list_order', 'page')) . 'list_order=searchterm-desc', '', 'NONSSL'); ?>"><?php echo ($_GET['list_order']=='searchterm-desc' ? '<span class="SortOrderHeader">Desc</span>' : '<span class="SortOrderHeaderLink">Desc</span>'); ?></a>
+                                     </td>
+                                     <td class="dataTableHeadingContent" width="20%">
+                                       <?php echo (($_GET['list_order']=='searchresults' or $_GET['list_order']=='searchresults-desc') ? '<span class="SortOrderHeader">' . TABLE_HEADING_RESULTS . '</span>' : TABLE_HEADING_RESULTS); ?><br />
+                                       <a href="<?php echo zen_href_link(basename($PHP_SELF), zen_get_all_get_params(array('list_order', 'page')) . 'list_order=searchresults', '', 'NONSSL'); ?>"><?php echo ($_GET['list_order']=='searchresults' ? '<span class="SortOrderHeader">Asc</span>' : '<span class="SortOrderHeaderLink">Asc</span>'); ?></a>
+                                       <a href="<?php echo zen_href_link(basename($PHP_SELF), zen_get_all_get_params(array('list_order', 'page')) . 'list_order=searchresults-desc', '', 'NONSSL'); ?>"><?php echo ($_GET['list_order']=='searchresults-desc' ? '<span class="SortOrderHeader">Desc</span>' : '<span class="SortOrderHeaderLink">Desc</span>'); ?></a>
                                        </td>
                                     </tr>
                                     <?php

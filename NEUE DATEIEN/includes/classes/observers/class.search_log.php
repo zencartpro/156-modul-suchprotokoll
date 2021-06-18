@@ -1,7 +1,7 @@
 <?php
-// Search Log v2.5.1
+// Search Log v2.6.0
 // Written By C.J.Pinder (c) 2007
-// Portions Copyright 2003-2020 Zen Cart Development Team
+// Portions Copyright 2003-2021 Zen Cart Development Team
 // Portions Copyright 2003 osCommerce
 //
 // This source file is subject to version 2.0 of the GPL license, 
@@ -29,6 +29,15 @@ class search_log extends base
 	{
 		global $db;
 		global $from_str, $where_str, $order_str;
+      $exclude_admin = true; 
+
+      if ($exclude_admin) { 
+         if (!empty($_SERVER['REMOTE_ADDR']) && !empty(EXCLUDE_ADMIN_IP_FOR_MAINTENANCE)) {
+            if (strpos(EXCLUDE_ADMIN_IP_FOR_MAINTENANCE, $_SERVER['REMOTE_ADDR']) !== false) { 
+               return; 
+            }
+         }
+      }
 
 		switch ($eventID)
 		{
